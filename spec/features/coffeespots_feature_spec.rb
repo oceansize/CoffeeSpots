@@ -30,3 +30,18 @@ describe 'Coffee House creation form' do
     expect(page).to have_content 'Milk Bar'
   end
 end
+
+describe 'Coffee Spot edit form' do
+  before{Coffeespot.create name: 'Monmouth'}
+
+  it 'should be able to edit a Coffee Spot listing' do
+    visit '/coffeespots'
+    click_link 'Edit Monmouth'
+
+    fill_in 'Name', with: 'Monmouth Coffee'
+    click_button 'Update Coffeespot'
+
+    expect(current_path).to eq '/coffeespots'
+    expect(page).to have_content 'Monmouth Coffee'
+  end
+end

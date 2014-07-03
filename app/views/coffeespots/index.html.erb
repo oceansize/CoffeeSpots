@@ -1,7 +1,7 @@
 <% if @coffeespots.any? %>
   <ul>
     <% @coffeespots.each do |spot| %>
-    <li><%= spot.name %></li>
+    <li><%= spot.name %> <%= link_to "Edit #{spot.name}", edit_coffeespot_path(spot.id) %></li>
     <% end %>
   </ul>
 <% else %>

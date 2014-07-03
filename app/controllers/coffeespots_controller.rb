@@ -5,10 +5,21 @@ class CoffeespotsController < ApplicationController
   end
 
   def new
+    @coffeespot = Coffeespot.new
   end
 
   def create
-    Coffeespot.create coffeespot_params()
+    Coffeespot.create coffeespot_params
+    redirect_to '/coffeespots'
+  end
+
+  def edit
+    @coffeespot = Coffeespot.find params[:id]
+  end
+
+  def update
+    @coffeespot = Coffeespot.find params[:id]
+    @coffeespot.update coffeespot_params
     redirect_to '/coffeespots'
   end
 
