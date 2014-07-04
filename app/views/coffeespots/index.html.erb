@@ -1,4 +1,5 @@
 <% if @coffeespots.any? %>
+<h3>Known CoffeeSpots:</h3>
   <ul>
     <% @coffeespots.each do |spot| %>
     <li><%= spot.name %> <%= link_to "Edit #{spot.name}", edit_coffeespot_path(spot.id) %></li>
