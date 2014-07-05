@@ -33,7 +33,7 @@ describe 'Coffee House creation form' do
 end
 
 describe 'Coffee Spot edit form' do
-  before{Coffeespot.create name: 'Monmouth'}
+  before{Coffeespot.create name: 'Monmouth', url: 'http://www.monmouthcoffee.co.uk'}
 
   it 'should be able to edit a Coffee Spot listing' do
     visit '/coffeespots'
@@ -45,11 +45,12 @@ describe 'Coffee Spot edit form' do
     expect(current_path).to eq '/coffeespots'
     expect(page).to have_content 'Monmouth Coffee'
   end
-end
 
-# ~> LoadError
-# ~> cannot load such file -- rails_helper
-# ~>
-# ~> /Users/roidriscoll/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /Users/roidriscoll/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/rubygems/core_ext/kernel_require.rb:55:in `require'
-# ~> /Users/roidriscoll/Makers/projects/coffeespots/spec/features/coffeespots_feature_spec.rb:1:in `<main>'
+  it 'should be able to delete a listing' do
+    visit '/coffeespots'
+    click_link 'Delete Monmouth'
+
+    expect(page).not_to have_content 'Delete Monmouth'
+    expect(page).to have_content 'Monmouth successfully deleted'
+  end
+end

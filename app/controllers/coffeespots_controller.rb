@@ -24,6 +24,13 @@ class CoffeespotsController < ApplicationController
     redirect_to '/coffeespots'
   end
 
+  def destroy
+    @coffeespot = Coffeespot.find params[:id]
+    @coffeespot.destroy
+    flash[:notice] = "#{@coffeespot.name} successfully deleted"
+    redirect_to '/coffeespots'
+  end
+
   private
 
   def coffeespot_params
