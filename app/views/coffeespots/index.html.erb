@@ -2,9 +2,10 @@
 <h3>Known CoffeeSpots:</h3>
   <ul>
     <% @coffeespots.each do |spot| %>
-    <li><%= spot.name %> <%= link_to "Edit #{spot.name}", edit_coffeespot_path(spot.id) %></li>
+    <li><%= spot.name %> <a href="<%=spot.url%>">url</a> <%= link_to "Edit", edit_coffeespot_path(spot.id) %></li>
     <% end %>
   </ul>
 <% else %>
   <h3>There are no Coffee Spots yet.</h3>
 <% end %>
+<a href="/coffeespots/new">Add a CoffeeSpot!</a>

@@ -20,7 +20,7 @@ class CoffeespotsController < ApplicationController
   def update
     @coffeespot = Coffeespot.find params[:id]
     # the .permit(:name) part is necessary for security reasons
-    @coffeespot.update params[:coffeespot].permit(:name)
+    @coffeespot.update coffeespot_params
     redirect_to '/coffeespots'
   end
 
@@ -28,6 +28,6 @@ class CoffeespotsController < ApplicationController
 
   def coffeespot_params
     # params = {coffeespot: {name: jon, cohort: may}}
-    params.require(:coffeespot).permit(:name)
+    params.require(:coffeespot).permit(:name, :url)
   end
 end
