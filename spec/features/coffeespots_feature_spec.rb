@@ -1,4 +1,4 @@
-require 'rails_helper'  # ~> LoadError: cannot load such file -- rails_helper
+require 'rails_helper'
 
 describe 'CoffeeSpots listings page' do
   context 'when there are none' do
