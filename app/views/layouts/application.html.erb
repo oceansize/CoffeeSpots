@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Coffeespots</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <h1>Welcome to CoffeeSpots</h1>
 <a href="/">home</a>
+<% if user_signed_in? %>	
+	<%= current_user.email %>
+	<%= link_to "log out", destroy_user_session_path, method: :delete %>
+<% else %>
+	<p>welcome, please sign in or sign up</p>
+	<%= link_to "sign in", new_user_session_path %>
+	<%= link_to "sign up", new_user_registration_path %>
+<% end %>	
 <p>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city. Let us know how good that brew was!</p>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
