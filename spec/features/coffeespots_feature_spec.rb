@@ -35,22 +35,44 @@ end
 describe 'Coffee Spot edit form' do
   before{Coffeespot.create name: 'Monmouth', url: 'http://www.monmouthcoffee.co.uk'}
 
-  it 'should be able to edit a Coffee Spot listing' do
-    visit '/coffeespots'
-    click_link 'Edit'
+  # context 'when logged in' do
+  #   it 'should be able to edit a Coffee Spot listing' do
+  #     visit '/coffeespots'
+  #     click_link 'Edit'
+  #     fill_in 'Name', with: 'Monmouth Coffee'
+  #     click_button 'Update Coffeespot'
+  #     expect(current_path).to eq '/coffeespots'
+  #     expect(page).to have_content 'Monmouth Coffee'
+  #   end
 
-    fill_in 'Name', with: 'Monmouth Coffee'
-    click_button 'Update Coffeespot'
+  #   it 'should be able to delete a listing' do
+  #     visit '/coffeespots'
+  #     click_link 'Delete Monmouth'
+  #     expect(page).not_to have_content 'Delete Monmouth'
+  #     expect(page).to have_content 'Monmouth successfully deleted'
+  #   end
+  # end
 
-    expect(current_path).to eq '/coffeespots'
-    expect(page).to have_content 'Monmouth Coffee'
-  end
+  context 'when logged out' do
+    xit 'should not be possible to edit a listing' do
+      visit '/coffeespots'
+      expect(page).not_to have_link('Edit')
+    end
 
-  it 'should be able to delete a listing' do
-    visit '/coffeespots'
-    click_link 'Delete Monmouth'
-
-    expect(page).not_to have_content 'Delete Monmouth'
-    expect(page).to have_content 'Monmouth successfully deleted'
+    xit 'should not be able to delete a listing' do
+      visit '/coffeespots'
+      expect(page).not_to have_link('Delete Monmouth')
+    end
   end
 end
+
+
+
+
+
+
+
+
+
+
+

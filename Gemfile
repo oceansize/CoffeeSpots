@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
 # Use postgresql as the database for Active Record
@@ -23,12 +22,25 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+# Devise is a flexible authentication solution for Rails based on Warden
+gem 'devise'
+# https://github.com/twbs/bootstrap-sass
+gem 'bootstrap-sass', '~> 3.2.0'
+# https://github.com/ai/autoprefixer-rails
+gem 'autoprefixer-rails'
+# https://github.com/sstephenson/sprockets
+gem 'sprockets'
+
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
 group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara'
+  gem 'pry-rails'
+  gem 'debugger'
+  gem 'launchy'
+  gem 'rspec-collection_matchers'
 end
 
 # Use ActiveModel has_secure_password
