@@ -41,6 +41,7 @@ group :test, :development do
   gem 'debugger'
   gem 'launchy'
   gem 'rspec-collection_matchers'
+  # gem 'warden-rspec-rails'
 end
 
 # Use ActiveModel has_secure_password

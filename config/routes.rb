@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
+
   root to: "coffeespots#index"
   resources :coffeespots do
     resources :reviews
   end
+
+  # match '/signup',  to: 'devise/registrations#new', via: 'get'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
