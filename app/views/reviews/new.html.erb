@@ -1,9 +1,11 @@
 <%= form_for [@coffeespot, @review] do |rev| %>
-  <%= rev.label :thoughts %>
-  <%= rev.text_area :thoughts %>
 
-  <%= rev.label :rating %>
-  <%= rev.select :rating, 1..5 %>
-  <%= rev.submit %>
+	<%= rev.label :thoughts, 'Thoughts' %><br/>
+	<%= rev.text_area :thoughts %><br/><br/>
+
+	<%= rev.label :rating, 'Rating:' %>
+	<%= rev.select :rating, 1..5 %><br/><br/>
+
+	<%= rev.submit 'Submit Review' %>
 
 <% end %>

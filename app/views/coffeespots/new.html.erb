@@ -1,3 +1,13 @@
-<h1>Create a new Spot</h1>
+<h2>Add a new CoffeeSpot</h2>
 
-<%= render 'form' %>
+<%= form_for @coffeespot do |spot| %>
+
+  <%= spot.label :name %>
+  <%= spot.text_field :name %><br/><br/>
+
+  <%= spot.label :url %>
+  <%= spot.text_field :url %><br/><br/>
+
+  <%= spot.submit 'Add Spot' %>
+
+<% end %>

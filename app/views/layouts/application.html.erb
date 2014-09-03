@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Coffeespots</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<h1>Welcome to CoffeeSpots</h1>
-<a href="/">home</a>
-<% if user_signed_in? %>	
-	<%= current_user.email %>
-	<%= link_to "log out", destroy_user_session_path, method: :delete %>
-<% else %>
-	<p>welcome, please sign in or sign up</p>
-	<%= link_to "sign in", new_user_session_path %>
-	<%= link_to "sign up", new_user_registration_path %>
-<% end %>	
-<p>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city. Let us know how good that brew was!</p>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+	<head>
+		<title>Coffeespots</title>
+		<%= stylesheet_link_tag 'application', media: 'all' %>
+		<%= javascript_include_tag 'application' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-</body>
+		<div class='welcome-message-container'>	
+			<% if user_signed_in? %>
+				Welcom <%= current_user.email %>
+			<% else %>
+				Welcom Guest
+			<% end %>
+		</div><br/>
+
+		<div class='system-messages-container'>
+			<% if notice %>
+				<%= notice %><br/><br/>
+			<% end %>
+			<% if alert %>
+				<%= alert %><br/><br/>
+			<% end %>
+		</div>
+
+		<div class='nav-buttons-container'>
+			<% if user_signed_in? %>
+				<%= link_to "Account", user_path(current_user.id) %>
+				<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to "Sign up", new_user_registration_path %>
+				<%= link_to "Sign in", new_user_session_path %>
+			<% end %>
+			<%= link_to "Home", root_path %>
+		</div>	
+			
+		<h1>Welcome to CoffeeSpots</h1>
+	
+		<p>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
+		<p>Let us know how good that brew was!</p>
+
+		<%= yield %>
+
+	</body>
 </html>

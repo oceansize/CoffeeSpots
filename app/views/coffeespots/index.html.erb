@@ -1,23 +1,37 @@
 <% if @coffeespots.any? %>
-<h3>Known CoffeeSpots:</h3>
-  <ul>
-    <% @coffeespots.each do |spot| %>
-    <li>
-      <%= spot.name %> <a href="<%=spot.url%>">url</a>
-      <%= link_to "Review #{spot.name}", new_coffeespot_review_path(spot.id) %>
-      <%= link_to "Edit", edit_coffeespot_path(spot.id) %>
-      <%= link_to "Delete #{spot.name}", coffeespot_path(spot.id), method: :delete, 'data-confirm' => 'Are you sure you want to delete this?' %>
-      <ul>
-      <% spot.reviews.each do |review| %>
-        <li><%= review.thoughts %> (<%= review.rating %>)</li>
-      <% end %>
-      </ul>
-    </li>
-    <% end %>
-  </ul>
+    <h2>CoffeeSpots</h2>
+    <ul>
+        <% @coffeespots.each do |coffeespot| %>
+            <div>
+                <p>Name: <%= coffeespot.name %></p>
+                <p>Url: <%= link_to "#{coffeespot.url}", coffeespot.url %></p>
+                <% if coffeespot.reviews.any? %>
+                    <p>Reviews:</p>
+                    <ul>
+                        <% coffeespot.reviews.each do |review| %>
+                            <li><%= review.thoughts %> (<%= review.rating %>)</li>
+                        <% end %>
+                    </ul>
+                <% else %>
+                    <p>Reviews: No reviews yet</p>
+                <% end %>
+                <% if user_signed_in? %>
+                    <p>
+                        <%= link_to 'Review', new_coffeespot_review_path(coffeespot.id) %>
+
+                        <%= link_to 'Edit', edit_coffeespot_path(coffeespot.id) %>
+     
+                        <%= link_to 'Delete', coffeespot_path(coffeespot.id), method: :delete, data: { confirm: "Are you sure?" } %>
+                    </p>
+                <% end %>
+            </div>
+        <% end %>
+    </ul>
 <% else %>
-  <h3>There are no Coffee Spots yet.</h3>
+    <p>No Coffee Spots yet</p>
 <% end %>
-<a href="/coffeespots/new">Add a CoffeeSpot!</a>
-<br>
-<a href="/users">See Users</a>
+
+<%= link_to 'Add CoffeeSpot', new_coffeespot_path %>
+
+
+
