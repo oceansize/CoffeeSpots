@@ -20,6 +20,5 @@ class PostsController < ApplicationController
 		params[:post].permit(:id, :title, :content)
 	end
 
-
 end
 

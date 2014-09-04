@@ -7,12 +7,11 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-
 		<div class='message-container'>	
 			<% if user_signed_in? %>
-				<span class='welcome-message'>Welcom <%= current_user.email %></span>
+				<span class='welcome-message'>Welcome <%= current_user.email %></span>
 			<% else %>
-				<span class='welcome-message'>Welcom Guest</span>
+				<span class='welcome-message'>Welcome Guest</span>
 			<% end %>
 			<% if notice %>
 				<span class='notice system-message'><%= notice %></span>
@@ -21,7 +20,6 @@
 				<span class='alert system-message'><%= alert %></span>
 			<% end %>
 		</div>
-
 		<div class='nav-buttons-container'>
 			<% if user_signed_in? %>
 				<%= link_to "Account", user_path(current_user.id) %>
@@ -31,14 +29,14 @@
 				<%= link_to "Sign in", new_user_session_path %>
 			<% end %>
 			<%= link_to "Home", root_path %>
-		</div>	
-			
-		<h1>Welcome to CoffeeSpots</h1>
-	
+		</div>				
+		<h1>Welcome to CoffeeSpots</h1>	
 		<p>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
-		<p>Sign-up ro sign-in and let us know how good that brew was!</p>
-
+		<% if user_signed_in? %>
+			<p>Post a review and let us know how good that brew was!</p>
+		<% else %>
+			<p>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
+		<% end %>
 		<%= yield %>
-
 	</body>
 </html>
