@@ -21,25 +21,25 @@
 
 ##General Description
 
-<p><strong>CoffeeSpots</strong> is a simple web app for collecting and storing user 
-reviews about their favourite coffee-shops.</p>
+__CoffeeSpots__ is a simple web app for collecting and storing user 
+reviews about their favourite coffee-shops.
 
-<p>The first iteration of this app was created while pair-programming with 
+The first iteration of this app was created while pair-programming with 
 [Roi Driscoll](https://github.com/roidriscoll) and it represents our first encouter 
 with [Ruby on Rails](http://rubyonrails.org/) during week 8 of 
 the course at [Makers Academy](http://www.makersacademy.com/).
 
 The name 'CoffeeSpots' was [Roi's](https://github.com/roidriscoll) idea.
 
-<p>Later itterations included minor functional upgrades, code refactoring amd updating
-of the testing suite.</p>
+Later itterations included minor functional upgrades, code refactoring amd updating
+of the testing suite.
 
 The app is based on a [PostgreSQL](http://www.postgresql.org/) database  
-and impletemts [Devise](https://github.com/plataformatec/devise) for user authentication.</p>
+and impletemts [Devise](https://github.com/plataformatec/devise) for user authentication.
 
-<p>It was written according to [TDD](http://en.wikipedia.org/wiki/Test-driven_development), 
+It was written according to [TDD](http://en.wikipedia.org/wiki/Test-driven_development), 
 and uses [Rspec](http://rspec.info) and [Capybara](https://github.com/jnicklas/capybara) 
-for testing.</p>
+for testing.
 
 
 ##Functional Description
