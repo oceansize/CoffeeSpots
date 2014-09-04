@@ -29,12 +29,12 @@ The first iteration of this app was created while pair-programming with
 with [Ruby on Rails](http://rubyonrails.org/) during week 8 of 
 the course at [Makers Academy](http://www.makersacademy.com/).
 
-The name 'CoffeeSpots' was [Roi's](https://github.com/roidriscoll) idea.
+The name 'CoffeeSpots' was [Roi](https://github.com/roidriscoll)'s idea.
 
-Later itterations included minor functional upgrades, code refactoring amd updating
-of the testing suite.
+Later itterations included functional upgrades, code refactoring, some html/css styling, 
+and updating of the testing suite.
 
-The app is based on a [PostgreSQL](http://www.postgresql.org/) database  
+The app is based on a [PostgreSQL](http://www.postgresql.org/) database 
 and impletemts [Devise](https://github.com/plataformatec/devise) for user authentication.
 
 It was written according to [TDD](http://en.wikipedia.org/wiki/Test-driven_development), 
