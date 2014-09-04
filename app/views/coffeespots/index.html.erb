@@ -3,26 +3,23 @@
     <ul>
         <% @coffeespots.each do |coffeespot| %>
             <div>
-                <p>Name: <%= coffeespot.name %></p>
+                <p>CoffeeSpot Name: <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %></p>
                 <p>Url: <%= link_to "#{coffeespot.url}", coffeespot.url %></p>
                 <% if coffeespot.reviews.any? %>
                     <p>Reviews:</p>
                     <ul>
                         <% coffeespot.reviews.each do |review| %>
-                            <li><%= review.thoughts %> (<%= review.rating %>)</li>
+                            <li>
+                                <%= link_to review.thoughts, coffeespot_review_path(coffeespot.id, review.id) %>
+                                (<%= review.rating %>)  
+                            </li>
                         <% end %>
                     </ul>
                 <% else %>
                     <p>Reviews: No reviews yet</p>
                 <% end %>
                 <% if user_signed_in? %>
-                    <p>
-                        <%= link_to 'Review', new_coffeespot_review_path(coffeespot.id) %>
-
-                        <%= link_to 'Edit', edit_coffeespot_path(coffeespot.id) %>
-     
-                        <%= link_to 'Delete', coffeespot_path(coffeespot.id), method: :delete, data: { confirm: "Are you sure?" } %>
-                    </p>
+                    <p><%= link_to 'Add Review', new_coffeespot_review_path(coffeespot.id) %></p>
                 <% end %>
             </div>
         <% end %>
@@ -31,7 +28,8 @@
     <p>No Coffee Spots yet</p>
 <% end %>
 
-<%= link_to 'Add CoffeeSpot', new_coffeespot_path %>
-
+<% if user_signed_in? %>
+    <%= link_to 'Add CoffeeSpot', new_coffeespot_path %>
+<% end %>
 
 

@@ -3,10 +3,15 @@ Rails.application.routes.draw do
 
   root 'coffeespots#index'
 
-  resources :users
+  resources :posts
+
+  resources :users do
+   	resources :reviews
+  end
 
   resources :coffeespots do
-    resources :reviews
+   	resources :reviews
   end
+
 
 end
