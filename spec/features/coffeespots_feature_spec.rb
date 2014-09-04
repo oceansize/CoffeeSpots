@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe 'CoffeeSpots listings page' do
 
-    context 'when there are none' do
+    # context 'when there are none' do
  
-        it 'tells me there are no coffee spots' do
-            visit root_path
-            expect(page).to have_content 'No Coffee Spots yet'
-        end
+        # it 'tells me there are no coffee spots' do
+        #     visit root_path
+        #     expect(page).to have_content 'No Coffee Spots yet'
+        # end
  
-    end
+    # end
 
     context 'when there are coffee spots' do
 
