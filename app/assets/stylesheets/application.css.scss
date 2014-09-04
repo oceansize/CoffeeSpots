@@ -78,7 +78,7 @@ a {
 
 .coffeespot-name {
 	width: 400px;
-	display: inline-block;
+	display: inline-table;
 }
 
 .rating-star {	
@@ -96,6 +96,8 @@ a {
 
 .rating {
 	display: inline-block;
+	float: right;
+	padding-top: 6px;
 }
 
 .review {
