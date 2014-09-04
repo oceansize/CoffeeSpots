@@ -1,0 +1,17 @@
+<h2>Coffeespot Review</h2>
+
+<h3>CoffeeSpot Name: <%= @coffeespot.name %></h3>
+
+<h4>Review by: <%= @user.email %></h4>
+
+<h4>Rating: <%= @review.rating %></h4>
+
+<h4>Thoughts: <%= @review.thoughts %></h4>
+
+<% if current_user.reviews.include? @review %>
+	<%= link_to 'Edit', edit_user_review_path(current_user.id, @review.id) %>
+	<%= link_to 'Delete', user_review_path(current_user.id, @review.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<%= link_to 'Back', root_path %>
+

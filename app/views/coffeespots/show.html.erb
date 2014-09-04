@@ -1,0 +1,27 @@
+<h2>Coffeespot Page</h2>
+
+<h3>CoffeeSpot Name: <%= @coffeespot.name %></h3>
+
+<h4>Added by: <%= @user.email %></h4>
+
+<% if @coffeespot.reviews.any? %>
+    <p>Reviews:</p>
+    <ul>
+        <% @coffeespot.reviews.each do |review| %>
+            <li>
+                <%= link_to review.thoughts, coffeespot_review_path(@coffeespot.id, review.id) %>
+                (<%= review.rating %>)  
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>Reviews: No reviews yet</p>
+<% end %>
+
+<% if current_user.coffeespots.include? @coffeespot %>
+	<%= link_to 'Edit', edit_coffeespot_path(@coffeespot.id) %>
+	<%= link_to 'Delete', coffeespot_path(@coffeespot.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<%= link_to 'Back', root_path %>
+
