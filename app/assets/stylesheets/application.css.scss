@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+	font-family: "Gotham Narrow SSm",sans-serif,Arial;
+	letter-spacing: 0.2px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	margin-right: 8px;
+	color: #8C42D4;
+	&:hover {
+		cursor: default;
+		color: #57228B;
+	}
+}
+
+.message-container {
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.welcome-message {
+	color: black;
+}
+
+.system-message {
+	margin-left: 100px;
+}
+
+.notice {
+	color: green;
+}
+
+.alert {
+	color: red;
+}
+
+.coffeespot-list-container {
+	margin-left: -10px;
+	padding-left: 0px;
+}
+
+.coffeespot-container {
+	border: 2px solid rgb(100, 100, 100);
+	border-radius: 2px;
+	width: 50%;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding-top: 0px;
+	padding-left: 17px;
+	padding-right: 22px;
+	padding-bottom: 0px;
+}
+
+.coffeespot-title {
+	width: 100px;
+	color: rgb(120, 120, 120);
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.coffeespot-name {
+	width: 400px;
+	display: inline-block;
+}
+
+.rating-star {	
+	margin-left: 1px;
+	margin-right: 1px;
+	display: inline-block;
+}
+
+.reviewer {
+	display: inline-block;
+	width: 120px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.rating {
+	display: inline-block;
+}
+
+.review {
+	text-align: justify;
+	margin-bottom: 10px;
+}
+
+
+
+

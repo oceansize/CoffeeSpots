@@ -4,9 +4,16 @@
 
 <h4>Review by: <%= @user.email %></h4>
 
-<h4>Rating: <%= @review.rating %></h4>
+<h4>Rating: 
+	<% @review.rating.times do %>
+		<%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+	<% end %>
+</h4>
 
-<h4>Thoughts: <%= @review.thoughts %></h4>
+<h4>Thoughts:</h4> 
+<div>
+	<%= @review.thoughts %>
+</div><br/>
 
 <% if current_user.reviews.include? @review %>
 	<%= link_to 'Edit', edit_user_review_path(current_user.id, @review.id) %>

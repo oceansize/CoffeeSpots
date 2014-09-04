@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
         @review = @coffeespot.reviews.new review_params
         @review.user_id = current_user.id
         if @review.save
-            flash[:notice] = 'Review created!'
+            flash[:notice] = 'Review added!'
             redirect_to '/coffeespots'
         else
             render 'new'
@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
     def destroy
         @review = Review.find_by_id params[:id]
         @review.destroy
-        redirect_to root_path, notice: 'Review successfully deleted'
+        redirect_to root_path, notice: 'Review deleted!'
     end
 
     private

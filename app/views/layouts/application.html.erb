@@ -8,20 +8,17 @@
 	</head>
 	<body>
 
-		<div class='welcome-message-container'>	
+		<div class='message-container'>	
 			<% if user_signed_in? %>
-				Welcom <%= current_user.email %>
+				<span class='welcome-message'>Welcom <%= current_user.email %></span>
 			<% else %>
-				Welcom Guest
+				<span class='welcome-message'>Welcom Guest</span>
 			<% end %>
-		</div><br/>
-
-		<div class='system-messages-container'>
 			<% if notice %>
-				<%= notice %><br/><br/>
+				<span class='notice system-message'><%= notice %></span>
 			<% end %>
 			<% if alert %>
-				<%= alert %><br/><br/>
+				<span class='alert system-message'><%= alert %></span>
 			<% end %>
 		</div>
 
