@@ -16,7 +16,7 @@
 	<tr>
 		<td align="center" width="220px" >
 			<a href="https://raw.githubusercontent.com/nadavmatalon/CoffeeSpots/master/app/assets/images/coffeespots-screenshot.jpg">
-				<img src="coffeespots-screenshot.jpg" height="105px" />
+				<img src="/app/assets/images/coffeespots-screenshot.jpg" height="105px" />
 			</a>
 		</td>
 	</tr>
