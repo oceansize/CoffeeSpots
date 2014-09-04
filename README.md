@@ -66,8 +66,8 @@ for testing.
 
 ##  Testing
 
-Tests were written with [Rspec](http://rspec.info) (2.14.8) & 
-[Capybara](https://github.com/jnicklas/capybara) (2.3.0).
+Tests were written with [Rspec](http://rspec.info) (3.0.2) & 
+[Capybara](https://github.com/jnicklas/capybara) (2.4.1).
 
 The tests cover both back-end logic and front-end functionality.
 
