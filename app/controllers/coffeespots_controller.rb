@@ -1,40 +1,55 @@
 class CoffeespotsController < ApplicationController
 
-  def index
-    @coffeespots = Coffeespot.all
-  end
+    def index
+        @coffeespots = Coffeespot.all
+    end
 
-  def new
-    @coffeespot = Coffeespot.new
-  end
+    def new
+        @coffeespot = Coffeespot.new
+        @user = current_user
+    end
 
-  def create
-    Coffeespot.create coffeespot_params
-    redirect_to '/coffeespots'
-  end
+    def create
+        @coffeespot = Coffeespot.new coffeespot_params
+        @coffeespot.user_id = current_user.id
+        if @coffeespot.save
+            flash[:notice] = 'CoffeeSpot added!'
+            redirect_to root_path
+        else
+            render 'new'
+        end
+    end
 
-  def edit
-    @coffeespot = Coffeespot.find params[:id]
-  end
+    def show
+        @coffeespot = Coffeespot.find params[:id]
+        @user = User.find_by_id(@coffeespot.user_id)
+    end
 
-  def update
-    @coffeespot = Coffeespot.find params[:id]
-    # the .permit(:name) part is necessary for security reasons
-    @coffeespot.update coffeespot_params
-    redirect_to '/coffeespots'
-  end
+    def edit
+        @coffeespot = Coffeespot.find params[:id]
+    end
 
-  def destroy
-    @coffeespot = Coffeespot.find params[:id]
-    @coffeespot.destroy
-    flash[:notice] = "#{@coffeespot.name} successfully deleted"
-    redirect_to '/coffeespots'
-  end
+    def update
+        @coffeespot = Coffeespot.find params[:id]
+        if @coffeespot.update coffeespot_params
+            flash[:notice] = 'CoffeeSpot updated!'
+            redirect_to coffeespot_path(@coffeespot.id)
+        else
+            render 'edit'
+        end
+    end
 
-  private
+    def destroy
+        @coffeespot = Coffeespot.find params[:id]
+        @coffeespot.destroy
+        flash[:notice] = 'CoffeeSpot deleted!'
+        redirect_to root_path
+    end
 
-  def coffeespot_params
-    # params = {coffeespot: {name: jon, cohort: may}}
-    params.require(:coffeespot).permit(:name, :url)
-  end
+    private
+
+    def coffeespot_params
+        params[:coffeespot].permit(:name, :url, :user_id)
+    end
+
 end

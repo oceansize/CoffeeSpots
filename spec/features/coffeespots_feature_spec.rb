@@ -5,7 +5,7 @@ describe 'CoffeeSpots listings page' do
     context 'when there are none' do
  
         it 'tells me there are no coffee spots' do
-            visit '/coffeespots'
+            visit root_path
             expect(page).to have_content 'No Coffee Spots yet'
         end
  
@@ -14,8 +14,9 @@ describe 'CoffeeSpots listings page' do
     context 'when there are coffee spots' do
 
         it 'should show the listed spots' do
-            Coffeespot.create(name: 'Flat White')
-            visit '/coffeespots'
+            user = User.create(email: 'user@test.com', password: '12345678', password_confirmation: '12345678')
+            Coffeespot.create(name: 'Flat White', url: "http://flatwhite.com", user_id: user.id)
+            visit root_path
             expect(page).to have_content 'Flat White'
         end
     end

@@ -1,13 +1,17 @@
 <h2>Add a new CoffeeSpot</h2>
 
-<%= form_for @coffeespot do |spot| %>
+<%= form_for @coffeespot do |coffeespot| %>
 
-  <%= spot.label :name %>
-  <%= spot.text_field :name %><br/><br/>
+	<% @coffeespot.errors.full_messages.each do |message| %>
+		<p><%= message %></p>
+	<% end %><br/>
 
-  <%= spot.label :url %>
-  <%= spot.text_field :url %><br/><br/>
+  <%= coffeespot.label :name %><br/>
+  <%= coffeespot.text_field :name, autofocus: true %><br/>
 
-  <%= spot.submit 'Add Spot' %>
+  <%= coffeespot.label :url %><br/>
+  <%= coffeespot.text_field :url %><br/>
+
+  <%= coffeespot.submit 'Add Spot' %>
 
 <% end %>

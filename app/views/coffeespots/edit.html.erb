@@ -1,4 +1,4 @@
-<h2>Update this Spot</h2>
+<h2>Update CoffeeSpot</h2>
 
 <%= form_for @coffeespot do |spot| %>
 
@@ -11,3 +11,8 @@
   <%= spot.submit 'Edit Spot' %>
 
 <% end %>
+
+<%= link_to 'Back', coffeespot_path(@coffeespot.id) %>
+
+
+

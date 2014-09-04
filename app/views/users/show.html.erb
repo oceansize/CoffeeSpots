@@ -1,7 +1,9 @@
-<h2>User Page</h2>
+<h2>User Account</h2>
 
 <li> <%= @user.email %></li>
 
 <br/>
 
-<%= link_to "Edit Account", edit_user_registration_path(@user.id) %>
+<%= link_to "Edit", edit_user_registration_path %>
+
+<%= link_to "Back", root_path %>
