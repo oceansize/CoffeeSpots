@@ -8,15 +8,27 @@
             <% @coffeespots.each do |coffeespot| %>
                 <div class='coffeespot-container'>
                     
-                        <div class='coffeespot-title'>Name:</div>
-                        <div class='coffeespot-name'><%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %></div>
-                          
-                    
-                        <div class='coffeespot-title'>Url:</div>
-                        <div class='coffeespot-name'><%= link_to "#{coffeespot.url}", coffeespot.url %></div>
+                    <div class='coffeespot-title'>
+                        Name:
+                    </div>
+
+                    <div class='coffeespot-name'>
+                        <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %>
+                    </div><br/>
+                             
+                    <div class='coffeespot-title'>
+                        Url:
+                    </div>
+                    <div class='coffeespot-name'>
+                        <%= link_to "#{coffeespot.url}", coffeespot.url %>
+                    </div><br/>
                     
                     <% if coffeespot.reviews.any? %>
-                        <div class='coffeespot-title'>Reviews:</div>
+
+                        <div class='coffeespot-title'>
+                            Reviews:
+                        </div>
+
                         <ul>
                             <% coffeespot.reviews.each do |review| %>
                                 <li>

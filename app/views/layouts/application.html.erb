@@ -3,40 +3,61 @@
 	<head>
 		<title>Coffeespots</title>
 		<%= stylesheet_link_tag 'application', media: 'all' %>
+		<link href='http://fonts.googleapis.com/css?family=Bubblegum+Sans|Marmelad|Julius+Sans+One' rel='stylesheet' type='text/css'>
 		<%= javascript_include_tag 'application' %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class='message-container'>	
-			<% if user_signed_in? %>
-				<span class='welcome-message'>Welcome <%= current_user.email %></span>
-			<% else %>
-				<span class='welcome-message'>Welcome Guest</span>
-			<% end %>
-			<% if notice %>
-				<span class='notice system-message'><%= notice %></span>
-			<% end %>
-			<% if alert %>
-				<span class='alert system-message'><%= alert %></span>
-			<% end %>
+		<div class='nav-bar'>
+			<div class='message-container'>	
+				<% if user_signed_in? %>
+					<div class='welcome-message'>Welcome <%= current_user.email %></div>
+				<% else %>
+					<div class='welcome-message'>Welcome Guest</div>
+				<% end %>
+				<div class='system-message'>
+				<% if notice %>
+					<div class='notice'>
+						<%= notice %>
+					</div>
+				<% end %>
+				<% if alert %>
+					<div class='alert'>
+						<%= alert %>
+					</div>
+				<% end %>
+				</div>
+				<div class='nav-buttons-container'>
+					<% if user_signed_in? %>
+						<div class='first-button'>
+							<%= link_to "Account", user_path(current_user.id) %>
+						</div>
+						<div class='second-button'>
+							<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+						</div>
+					<% else %>
+						<div class='first-button'>
+							<%= link_to "Sign up", new_user_registration_path %>
+						</div>
+						<div class='second-button'>
+							<%= link_to "Sign in", new_user_session_path %>
+						</div>
+					<% end %>
+					<div class='third-button'>
+						<%= link_to "Home", root_path %>
+					</div>
+				</div>				
+			</div>
 		</div>
-		<div class='nav-buttons-container'>
+		<div class='main-body'>
+			<p class='page-title'>Welcome to CoffeeSpots</p>	
+			<p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
 			<% if user_signed_in? %>
-				<%= link_to "Account", user_path(current_user.id) %>
-				<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+				<p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
 			<% else %>
-				<%= link_to "Sign up", new_user_registration_path %>
-				<%= link_to "Sign in", new_user_session_path %>
+				<p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
 			<% end %>
-			<%= link_to "Home", root_path %>
-		</div>				
-		<h1>Welcome to CoffeeSpots</h1>	
-		<p>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
-		<% if user_signed_in? %>
-			<p>Post a review and let us know how good that brew was!</p>
-		<% else %>
-			<p>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
-		<% end %>
-		<%= yield %>
+			<%= yield %>
+		</div>
 	</body>
 </html>

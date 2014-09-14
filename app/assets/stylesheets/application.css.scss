@@ -15,40 +15,113 @@
  */
 
 body {
-	font-family: "Gotham Narrow SSm",sans-serif,Arial;
+	// font-family: "Gotham Narrow SSm",sans-serif,Arial;
+	// font-family: 'Bubblegum Sans', cursive;
+	// font-family: 'Marmelad', sans-serif;
+	font-family: 'Julius Sans One', sans-serif;
 	letter-spacing: 0.2px;
 }
 
-a {
-	text-decoration: none;
-	color: black;
-	margin-right: 8px;
-	color: #8C42D4;
-	&:hover {
-		cursor: default;
-		color: #57228B;
-	}
-}
+// a {
+// 	text-decoration: none;
+// 	color: black;
+// 	margin-right: 8px;
+// 	color: #8C42D4;
+// 	&:hover {
+// 		cursor: default;
+// 		color: #57228B;
+// 	}
+// }
 
+
+.nav-bar {
+	margin-top: -10px;
+	position: fixed;
+	width: 100%;
+}
 .message-container {
 	margin-top: 10px;
 	margin-bottom: 15px;
+	background-color: rgb(200, 200, 200);
+	height: 40px;
+
 }
 
 .welcome-message {
 	color: black;
+	background-color: rgb(180, 180, 180);
+	height: 28px;
+	width: 20%;
+	padding-left: 10px;
+	padding-top: 12px;
+	display: inline-block !important;
+	vertical-align: top;
 }
 
 .system-message {
-	margin-left: 100px;
+	background-color: rgb(160, 160, 160);
+	color: black;
+	height: 28px;
+	width: 50%;
+	padding-top: 12px;
+	display: inline-block !important;
 }
 
 .notice {
-	color: green;
+	color: green !important;
 }
 
 .alert {
-	color: red;
+	color: red !important;
+}
+
+.page-title {
+	font-weight: 600;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 70px;
+	padding-bottom: 10px;
+}
+
+.page-sub-title {
+	text-align: center;
+	font-size: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.nav-buttons-container {
+	background-color: rgb(140, 140, 140);
+	height: 28px;
+	width: 350px;
+	padding-top: 12px;
+	display: inline-block !important;
+	vertical-align: top;
+}
+
+.first-button {
+	width: 110px;
+	border: 1px solid rgb(100, 100, 100);
+	display: inline-block !important;
+	text-align: center;
+
+}
+
+
+.second-button {
+	width: 110px;
+	border: 1px solid rgb(100, 100, 100);
+	display: inline-block !important;
+	text-align: center;
+
+}
+
+.third-button {
+	width: 110px;
+	border: 1px solid rgb(100, 100, 100);
+	display: inline-block !important;
+	text-align: center;
+
 }
 
 .coffeespot-list-container {
