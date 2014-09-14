@@ -50,17 +50,19 @@
 			</div>
 		</div>
 		<div class='main-body'>
-			<p class='page-title'>Welcome to CoffeeSpots</p>	
-			<p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
-			<% if user_signed_in? %>
-				<p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
-			<% else %>
-				<p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
-			<% end %>
-			<div class='spacer'>
+			<div class='page-top'>
+				<p class='page-title'>Welcome to CoffeeSpots</p>	
+				<p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
+				<% if user_signed_in? %>
+					<p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
+				<% else %>
+					<p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
+				<% end %>
+				<div class='spacer'>
+				</div>
 			</div>
 			<%= yield %>
-			
+
 		</div>
 	</body>
 </html>

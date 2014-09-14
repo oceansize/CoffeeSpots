@@ -3,9 +3,12 @@
     <% if user_signed_in? %> 
         <div class='container'>
             <a href=<%=new_coffeespot_path%> >
-                <p class='new'>Click Here To</p>
-                <p class='new'>Add A New</p>
+                <p class='new'>Click To Add</p>
+                <p class='new'>Your Favourite</p>
                 <p class='new'>CoffeeSpot</p>
+                <div class='image-spacer'>
+                </div>
+                <%= image_tag '/assets/coffee.png', alt: 'coffee', class: 'coffee-image' %>
             </a>
         </div>
     <% end %>
@@ -18,33 +21,33 @@
                 <p class='url'>
                     <%= link_to "Visit coffespot webpage", coffeespot.url %>
                 </p>
-                <div class='reviews-box'>
-                    <% if coffeespot.reviews.any? %>
-                            <% average_review = 0 %>
-                            <% coffeespot.reviews.each do |review| %>
-                                <% average_review += review.rating %>
-                            <% end %>
-                            <% average_review /= coffeespot.reviews.count.ceil %>
-                            <% average_review.times do %>
-                                <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
-                            <% end %>
-                            <div class='small-spacer'>                        
-                            </div>
-                            <% coffeespot.reviews.each do |review| %>
-                                <p class='reviewer-link'>
-                                    <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>
-                                </p>
-                                <p class='thoughts'>
-                                    <%= review.thoughts %>
-                                </p>
-                            <% end %>
-                            <br/>
-                            <br/>
-                    <% else%>
-                        <p class='no-reviews'>No reviews yet</p>
+                <% if coffeespot.reviews.any? %>
+                    <% average_review = 0 %>
+                    <% coffeespot.reviews.each do |review| %>
+                        <% average_review += review.rating %>
                     <% end %>
-                </div>
-                <% if user_signed_in? %>                    
+                    <% average_review /= coffeespot.reviews.count.ceil %>
+                    <% average_review.times do %>
+                        <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+                    <% end %>
+                    <div class='reviews-box'>
+                        <div class='small-spacer'>                        
+                        </div> 
+                        <% coffeespot.reviews.each do |review| %>
+                            <p class='reviewer-link'>
+                                <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>
+                            </p>
+                            <p class='thoughts'>
+                                <%= review.thoughts %>
+                            </p>
+                        <% end %>
+                    </div>
+                <% else%>
+                    <p class='no-reviews'>No reviews yet</p>
+                    <div class='no-reviews-spacer'>
+                    </div>
+                <% end %>
+                <div class='add-review-button'>
                     <div class='thin-spacer'>
                     </div>
                     <a href=<%=new_coffeespot_review_path(coffeespot.id)%> >
@@ -52,79 +55,8 @@
                             <p class='add-review'>Add a Review</p>
                         </div>
                     </a>
-                <% else %>
-                       <div class='no-add-review-container'>
-                        </div>
-                <% end %>
+                </div>
             </div>
         <% end %>
     <% end %>
-
-
-
 </div>
-
-
-<div class='spacer'>
-</div>
-<% if user_signed_in? %>
-    <%= link_to 'Add CoffeeSpot', new_coffeespot_path %>
-<% end %>
-<% if @coffeespots.any? %>
-    <h2>CoffeeSpots</h2>
-    <div class='coffeespot-list-container'>
-        <ul>
-            <% @coffeespots.each do |coffeespot| %>
-                <div class='coffeespot-container'>
-                    
-                    <div class='coffeespot-title'>
-                        Name:
-                    </div>
-
-                    <div class='coffeespot-name'>
-                        <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %>
-                    </div><br/>
-                             
-                    <div class='coffeespot-title'>
-                        Url:
-                    </div>
-                    <div class='coffeespot-name'>
-                        <%= link_to "#{coffeespot.url}", coffeespot.url %>
-                    </div><br/>
-                    
-                    <% if coffeespot.reviews.any? %>
-
-                        <div class='coffeespot-title'>
-                            Reviews:
-                        </div>
-
-                        <ul>
-                            <% coffeespot.reviews.each do |review| %>
-                                <li>
-                                    <div class='reviewer'>
-                                        <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>
-                                    </div>
-                                    <div class='rating'>
-                                        <% review.rating.times do %>
-                                            <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
-                                        <% end %>
-                                    </div>
-
-                                    <div class='review'>
-                                        <%= review.thoughts %>
-                                    </div>
-                                </li>
-                            <% end %>
-                        </ul>
-                    <% else %>
-                        <p>Reviews: No reviews yet</p>
-                    <% end %>
-                    <% if user_signed_in? %>
-                        <p><%= link_to "Add Review for #{coffeespot.name}", new_coffeespot_review_path(coffeespot.id) %></p>
-                    <% end %>
-                </div>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
-
