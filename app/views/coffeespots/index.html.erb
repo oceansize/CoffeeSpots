@@ -1,3 +1,51 @@
+
+<div class='main-container'>
+    <div class='container'>
+        
+    </div>
+    <% if @coffeespots.any? %>
+        <% @coffeespots.each do |coffeespot| %>
+            <div class='container'>
+                <p class='name'>
+                    <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %>
+                </p>         
+                <p class='url'>
+                    <%= link_to "Visit coffespot webpage", coffeespot.url %>
+                </p>
+                <% if coffeespot.reviews.any? %>
+
+                        <% average_review = 0 %>
+                        <% coffeespot.reviews.each do |review| %>
+                            <% average_review += review.rating %>
+                        <% end %>
+                        <% average_review /= coffeespot.reviews.count.ceil %>
+                        <% average_review.times do %>
+                            <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+                        <% end %>
+                        <div class='small-spacer'>                        
+                        </div>
+                        <% coffeespot.reviews.each do |review| %>
+                            <p class='reviewer-link'>
+                                <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>
+                            </p>
+                            <p class='thoughts'>
+                                <%= review.thoughts %>
+                            </p>
+                        <% end %>
+                        <div class='thin-spacer'>
+                        </div>
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
+
+
+
+</div>
+
+
+<div class='spacer'>
+</div>
 <% if user_signed_in? %>
     <%= link_to 'Add CoffeeSpot', new_coffeespot_path %>
 <% end %>
