@@ -1,53 +1,56 @@
 require 'rails_helper'
 
-describe 'CoffeeSpots User features' do
-  context 'New user page' do
-    it 'should have a descriptive header' do
-      visit new_user_registration_path
-      expect(page).to have_content('Sign up')
+describe 'Users registration' do
+
+    it 'users can sign up' do
+        visit new_user_registration_path
+        fill_in 'Email', with: 'user@example.com'
+        fill_in 'Password', with: 'password'
+        fill_in 'Password confirmation', with: 'password'
+        click_button 'Sign up'
+        expect(page).to have_content 'Signed up successfully'
     end
-  end
+
+    it 'usrs can sign in' do
+        create_user
+        visit new_user_session_path
+        fill_in 'Email', with: 'user@example.com'
+        fill_in 'Password', with: 'password'
+        click_button 'Sign in'
+        expect(page).to have_content 'Signed in successfully'
+    end
+
+    it 'users can sign out' do
+        create_user
+        visit new_user_session_path
+        fill_in 'Email', with: 'user@example.com'
+        fill_in 'Password', with: 'password'
+        click_button 'Sign in'
+        expect(page).not_to have_link 'Sign in'
+        click_link('Sign out')
+        expect(page).to have_link 'Sign in'
+    end
+
+    it 'users cannot sign out when alreay signed out' do
+        create_user
+        visit root_path
+        sign_in_user
+        click_link 'Sign out'
+        expect(page).not_to have_link 'Sign out'
+        expect(page).to have_link 'Sign in'
+        expect(page).to have_link 'Sign up'
+    end
 
 end
 
-describe 'users registration/login' do
 
-  it 'can sign up' do
-    visit '/users/sign_up'
-    fill_in 'Email', with: 'alex@example.com'
-    fill_in 'Password', with: '12345678'
-    fill_in 'Password confirmation', with: '12345678'
-    click_button 'Sign up'
-    expect(page).to have_content 'Signed up successfully'
-  end
-
-  it 'can sign in' do
-    User.create(email: 'alex@example.com', password: '12345678', password_confirmation: '12345678')
-    visit '/users/sign_in'
-    fill_in 'Email', with: 'alex@example.com'
-    fill_in 'Password', with: '12345678'
-    click_button 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
-  end
-
-  it 'can log out' do
-    User.create(email: 'alex@example.com', password: '12345678', password_confirmation: '12345678')
-    visit '/users/sign_in'
-    fill_in 'Email', with: 'alex@example.com'
-    fill_in 'Password', with: '12345678'
-    click_button 'Sign in'
-    expect(page).not_to have_link('sign in')
-    #visit '/'
-    click_link('log out')
-    expect(page).to have_link('sign in')
-  end
-
-  it 'when logged out' do
-    visit '/'
-    expect(page).not_to have_link('log out')
-    expect(page).to have_link('sign in')
-    expect(page).to have_link('sign up')
-  end
-
+def create_user (email = "user@example.com", password = "password", password_confirmation = "password")
+    User.create(email: email, password: password, password_confirmation: password_confirmation)
 end
 
+def sign_in_user
+    click_link 'Sign in'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Sign in'
+end

@@ -1,0 +1,32 @@
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>Coffeespot Review</p>
+</div>
+<div class='sign-in-form'>
+
+<h3>CoffeeSpot Name: <%= @coffeespot.name %></h3>
+
+<h4>Review by: <%= @user.email %></h4>
+
+<h4>Rating: 
+	<% @review.rating.times do %>
+		<%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+	<% end %>
+</h4>
+
+<h4>Thoughts:</h4> 
+<div>
+	<%= @review.thoughts %>
+</div><br/>
+
+<% if user_signed_in? %>
+	<% if current_user.reviews.include? @review %>
+		<%= link_to 'Edit', edit_user_review_path(current_user.id, @review.id) %>
+		<%= link_to 'Delete', user_review_path(current_user.id, @review.id), method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+<% end %>
+
+<%= link_to 'Back', root_path %>
+
+</div>
+
+

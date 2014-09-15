@@ -1,23 +1,77 @@
-<% if @coffeespots.any? %>
-<h3>Known CoffeeSpots:</h3>
-  <ul>
-    <% @coffeespots.each do |spot| %>
-    <li>
-      <%= spot.name %> <a href="<%=spot.url%>">url</a>
-      <%= link_to "Review #{spot.name}", new_coffeespot_review_path(spot.id) %>
-      <%= link_to "Edit", edit_coffeespot_path(spot.id) %>
-      <%= link_to "Delete #{spot.name}", coffeespot_path(spot.id), method: :delete, 'data-confirm' => 'Are you sure you want to delete this?' %>
-      <ul>
-      <% spot.reviews.each do |review| %>
-        <li><%= review.thoughts %> (<%= review.rating %>)</li>
-      <% end %>
-      </ul>
-    </li>
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
+    <% if user_signed_in? %>
+        <p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
+    <% else %>
+        <p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
     <% end %>
-  </ul>
-<% else %>
-  <h3>There are no Coffee Spots yet.</h3>
-<% end %>
-<a href="/coffeespots/new">Add a CoffeeSpot!</a>
-<br>
-<a href="/users">See Users</a>
+</div>
+<div class='main-container'>
+    <% if user_signed_in? %> 
+        <div class='container'>
+            <a href=<%=new_coffeespot_path%> >
+                <div class='new-container'> 
+                    <p class='new'>Click To Add</p>
+                    <p class='new'>Your Favourite</p>
+                    <p class='new'>CoffeeSpot</p>
+                    <div class='image-spacer'>
+                    </div>
+                    <%= image_tag '/assets/coffee.png', alt: 'coffee', class: 'coffee-image' %>
+                </div>
+            </a>
+        </div>
+    <% end %>
+    <% if @coffeespots.any? %>
+        <% coffeespots_list = @coffeespots.sort_by { |coffeespot| coffeespot.name.gsub(/[^0-9A-Za-z]/, '').downcase } %>
+        <% coffeespots_list.each do |coffeespot| %>
+            <div class='container'>
+                <p class='name'>
+                    <%= link_to coffeespot.name, coffeespot_path(coffeespot.id), class: 'name-link' %>
+                </p>         
+                <p class='url'>
+                    <%= link_to "Visit coffespot webpage", coffeespot.url, class: 'url-link' %>
+                </p>
+                <% if coffeespot.reviews.any? %>
+                    <% average_review = 0 %>
+                    <% coffeespot.reviews.each do |review| %>
+                        <% average_review += review.rating %>
+                    <% end %>
+                    <% average_review /= coffeespot.reviews.count.ceil %>
+                    <div class='review-rating'>
+                        <% average_review.times do %>
+                            <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+                        <% end %>
+                    </div>
+                    <p class='review-count'>(<%= coffeespot.reviews.count %> Reviews)</p>
+                    <div class='reviews-box'>
+                        <div class='small-spacer'>                        
+                        </div>
+                        <% coffeespot.reviews.each do |review| %>
+                            <p class='reviewer-link-container'>
+                                <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id), class: 'reviewer-link' %>
+                            </p>
+                            <p class='thoughts'>
+                                <%= review.thoughts %>
+                            </p>
+                        <% end %>
+                    </div>
+                <% else%>
+                    <p class='no-reviews'>No reviews yet</p>
+                    <div class='no-reviews-spacer'>
+                    </div>
+                <% end %>
+                <% if user_signed_in? %> 
+                    <div class='add-review-button'>
+                        <div class='thin-spacer'>
+                        </div>
+                        <a href=<%=new_coffeespot_review_path(coffeespot.id)%> >
+                            <div class='add-review-container'>
+                                <p class='add-review'>Add a Review</p>
+                            </div>
+                        </a>
+                    </div>    
+                <% end %>
+            </div>
+        <% end %>
+    <% end %>
+</div>

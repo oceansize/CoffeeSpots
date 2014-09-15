@@ -1,0 +1,412 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+	font-family: "Gotham Narrow SSm",sans-serif,Arial;
+	// font-family: 'Bubblegum Sans', cursive;
+	// font-family: 'Marmelad', sans-serif;
+	// font-family: 'Julius Sans One', sans-serif;
+	letter-spacing: 0.2px;
+
+}
+
+a {
+	text-decoration: none !important;
+	&:hover {
+		cursor: default;
+	}
+}
+
+
+.background {
+	background-image: url('/assets/coffee-background.jpeg');
+	background-position-y: 58px;
+	background-repeat: no-repeat;
+	z-index: -1;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.bg-spacer {
+	width: 100%;
+	height: 204px;
+	margin-top: 56px;
+	position: fixed;
+	background-image: url('/assets/coffee-background.jpeg');
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
+.nav-bar {
+	height: 55px;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+ 	background-color: black;
+ 	border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.message-container {
+	margin-top: 10px;
+	margin-bottom: 15px;
+	height: 40px;
+
+}
+
+.welcome-message {
+	color: white;
+	height: 28px;
+	width: 20%;
+	padding-left: 10px;
+	padding-top: 12px;
+	display: inline-block !important;
+	vertical-align: top;
+}
+
+.system-message {
+	color: white;
+	height: 28px;
+	width: 53%;
+	padding-top: 12px;
+	display: inline-block !important;
+}
+
+.notice {
+	color: green !important;
+}
+
+.alert {
+	color: red !important;
+}
+
+.page-top {
+	position: fixed;
+	background-color: transparent;
+	width: 100%;
+	z-index: 2;
+	letter-spacing: 0.6px;
+}
+
+.page-title {
+	font-weight: 600;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 100px;
+	padding-bottom: 25px;
+	color: white;
+}
+
+.page-subtitle-container {
+	width: 100%;
+	padding-top: 150px;
+	position: fixed;
+	background-color: transparent;
+	z-index: 2;
+	color: white;
+
+}
+
+.page-sub-title {
+	text-align: center;
+	font-size: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.nav-buttons-container {
+	// background-color: rgb(140, 140, 140);
+	height: 28px;
+	width: 320px;
+	padding-top: 12px;
+	display: inline-block !important;
+	vertical-align: top;
+	background-color: black;
+}
+
+.first-button {
+	width: 110px;
+	display: inline-block !important;
+	text-align: left;
+	color: white;
+}
+
+.nav-button {
+	color: white;
+}
+
+.nav-button:hover {
+	color: orange;
+}
+
+.second-button {
+	width: 110px;
+	// border: 1px solid rgb(100, 100, 100);
+	display: inline-block !important;
+	text-align: left;
+	color: white;
+}
+
+.third-button {
+	width: 70px;
+	// border: 1px solid rgb(100, 100, 100);
+	display: inline-block !important;
+	text-align: left;
+	color: white;
+}
+
+.spacer {
+	width: 100%;
+	height: 10px;
+	// background-color: rgb(200, 200, 200);
+}
+
+.main-container {
+	width: 80%;
+	min-height: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 265px;
+	z-index: 20;
+	
+}
+
+.container {
+	width: 280px;
+	height: 400px;
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid rgb(20, 20, 20);
+	display: inline-block !important;
+	box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+	-moz-box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+	-webkit-box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+	float: left;
+	text-align: center;
+	background-color: white;
+}
+
+.name {
+	// background-color: rgb(200, 200, 200);
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 14px;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.name-link {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.new-container {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.new {
+	// background-color: rgb(200, 200, 200);
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.coffee-image {
+	width: 150px;
+	height: 150px;
+}
+
+.image-spacer {
+	width: 100%;
+	height: 30px;
+}
+
+.review-count {
+	color: rgb(140, 140, 140);
+	padding-top: 10px;
+	padding-bottom: 4px;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	word-spacing: 0.5px;
+}
+
+.url {
+	// background-color: rgb(220, 220, 220);
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 16px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.url-link {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.reviewer-link {
+	color: #8B1515;
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: #8B1515;
+	}
+}
+
+.small-spacer {
+	width: 100%;
+	height: 15px;
+	// background-color: rgb(220, 220, 220);
+}
+
+.reviews-box {
+	height: 232px;
+	width: 100%;
+	overflow-y: auto;
+}
+
+.add-review {
+	padding-top: 4px;
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.no-reviews-spacer {
+	height: 263px;
+	width: 100%;
+}
+
+.no-reviews {
+	font-size: 16px;
+	padding-top: 2px;
+}
+
+.reviewer-link-container {
+	margin-top: 0px;
+	margin-bottom: 12px;
+}
+
+.thoughts {
+	padding-bottom: 20px;
+	text-align: -webkit-left;
+	text-align: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	line-height: 18px;
+	font-size: 14px;
+	word-spacing: 0.5px;
+}
+
+.thin-spacer {
+	width: 280px;
+	height: 5px;
+	background-color: white;
+}
+
+.add-review-container {
+	width: 280px;
+	height: 25px;
+	background-color: rgb(240, 240, 240);
+	border-top: 1px solid rgb(200, 200, 200);
+}
+
+.coffeespot-list-container {
+	margin-left: -10px;
+	padding-left: 0px;
+}
+
+.coffeespot-container {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding-top: 0px;
+	padding-left: 17px;
+	padding-right: 22px;
+	padding-bottom: 0px;
+}
+
+.coffeespot-title {
+	width: 100px;
+	color: rgb(120, 120, 120);
+	display: inline-block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.coffeespot-name {
+	width: 400px;
+	display: inline-table;
+}
+
+.rating-star {	
+	margin-left: 1px;
+	margin-right: 1px;
+	display: inline-block;
+}
+
+.reviewer {
+	display: inline-block;
+	width: 120px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.rating {
+	display: inline-block;
+	float: right;
+	padding-top: 6px;
+}
+
+.review {
+	text-align: justify;
+	margin-bottom: 10px;
+}
+
+.sign-up-form {
+	margin-top: 250px;
+	text-align: center;
+	color: white;
+}
+
+.sign-in-form {
+	margin-top: 250px;
+	text-align: center;
+	color: white;
+}
+
+.user-account {
+	margin-top: 250px;
+	text-align: center;
+	color: white;
+}

@@ -1,78 +1,43 @@
 require 'rails_helper'
 
 describe 'CoffeeSpots listings page' do
-  context 'when there are none' do
-    it 'tells me there are no coffee spots' do
-      visit '/coffeespots'
-      expect(page).to have_content 'There are no Coffee Spots yet.'
-    end
-  end
 
-  context 'when there are coffee spots' do
-    before do
-      Coffeespot.create(name: 'Flat White')
-    end
-    it 'should show the listed shops' do
-        visit '/coffeespots'
-        expect(page).to have_content 'Flat White'
-    end
-  end
-end
-
-describe 'Coffee House creation form' do
-  it 'should be able to create a coffee house listing' do
-    visit '/coffeespots/new'
-
-    fill_in 'Name', with: 'Milk Bar'
-    fill_in 'Url', with: 'http://www.flatwhitecafe.com/milkbar.html'
-    click_button 'Create Coffeespot'
-
-    expect(current_path).to eq '/coffeespots'
-    expect(page).to have_content 'Milk Bar url'
-  end
-end
-
-describe 'Coffee Spot edit form' do
-  before{Coffeespot.create name: 'Monmouth', url: 'http://www.monmouthcoffee.co.uk'}
-
-  # context 'when logged in' do
-  #   it 'should be able to edit a Coffee Spot listing' do
-  #     visit '/coffeespots'
-  #     click_link 'Edit'
-  #     fill_in 'Name', with: 'Monmouth Coffee'
-  #     click_button 'Update Coffeespot'
-  #     expect(current_path).to eq '/coffeespots'
-  #     expect(page).to have_content 'Monmouth Coffee'
-  #   end
-
-  #   it 'should be able to delete a listing' do
-  #     visit '/coffeespots'
-  #     click_link 'Delete Monmouth'
-  #     expect(page).not_to have_content 'Delete Monmouth'
-  #     expect(page).to have_content 'Monmouth successfully deleted'
-  #   end
-  # end
-
-  context 'when logged out' do
-    xit 'should not be possible to edit a listing' do
-      visit '/coffeespots'
-      expect(page).not_to have_link('Edit')
+    before (:each) do
+        create_user
+        visit root_path
     end
 
-    xit 'should not be able to delete a listing' do
-      visit '/coffeespots'
-      expect(page).not_to have_link('Delete Monmouth')
+    it 'initially shows no coffeespots' do
+        expect(page).not_to have_content 'Test CoffeeSpot'
     end
-  end
+
+    it 'users cannot add coffeespots unless signed in' do
+        expect(page).not_to have_link 'Add CoffeeSpot'
+    end
+
+    it 'users can add coffeespots if signed in' do
+        sign_in_user
+        click_link 'Click To Add Your Favourite CoffeeSpot'
+        fill_in 'Name', with: 'Test Coffeespot'
+        fill_in 'Url', with: 'http://test_url.com'
+        click_button 'Add Spot'
+        expect(page).to have_content 'Test Coffeespot'
+    end
 end
 
 
+def create_user (email = "user@example.com", password = "password", password_confirmation = "password")
+    User.create(email: email, password: password, password_confirmation: password_confirmation)
+end
 
+def create_coffeespot (name='Test CoffeeSpot', url='www.test_url.com', user_id=User.first.id)
+    Coffeespot.create(name: name, url: url, user_id: user_id)
+end
 
-
-
-
-
-
-
+def sign_in_user
+    click_link 'Sign in'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Sign in'
+end
 
