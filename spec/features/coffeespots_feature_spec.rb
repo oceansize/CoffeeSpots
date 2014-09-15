@@ -17,7 +17,7 @@ describe 'CoffeeSpots listings page' do
 
     it 'users can add coffeespots if signed in' do
         sign_in_user
-        click_link 'Add CoffeeSpot'
+        click_link 'Click To Add Your Favourite CoffeeSpot'
         fill_in 'Name', with: 'Test Coffeespot'
         fill_in 'Url', with: 'http://test_url.com'
         click_button 'Add Spot'

@@ -19,7 +19,7 @@ describe 'Adding reviews to coffeespots' do
 
 	it 'users can add reviews to coffeespots if signed in' do
 		sign_in_user
-		click_link 'Add Review for Test CoffeeSpot'
+		click_link 'Add a Review'
 		select '5', from: 'Rating'
 		fill_in 'Thoughts', with: 'Great coffee'
 		click_button 'Submit Review'
