@@ -1,9 +1,8 @@
-<h2>User Account</h2>
-
-<li> <%= @user.email %></li>
-
-<br/>
-
-<%= link_to "Edit", edit_user_registration_path %>
-
-<%= link_to "Back", root_path %>
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>User Account</p>
+</div>
+<div class='user-account'>
+	<%= @user.email %><br/><br/>
+	<%= link_to "Edit", edit_user_registration_path %>
+	<%= link_to "Back", root_path %>
+</div>

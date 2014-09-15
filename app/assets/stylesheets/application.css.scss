@@ -1,15 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
  *= require_tree .
  *= require_self
  */
@@ -24,13 +13,9 @@ body {
 
 a {
 	text-decoration: none !important;
-// 	color: black;
-// 	margin-right: 8px;
-// 	color: #8C42D4;
-// 	&:hover {
-// 		cursor: default;
-// 		color: #57228B;
-	// }
+	&:hover {
+		cursor: default;
+	}
 }
 
 
@@ -46,14 +31,12 @@ a {
 .message-container {
 	margin-top: 10px;
 	margin-bottom: 15px;
-	// background-color: rgb(200, 200, 200);
 	height: 40px;
 
 }
 
 .welcome-message {
 	color: black;
-	// background-color: rgb(180, 180, 180);
 	height: 28px;
 	width: 20%;
 	padding-left: 10px;
@@ -63,7 +46,6 @@ a {
 }
 
 .system-message {
-	// background-color: rgb(160, 160, 160);
 	color: black;
 	height: 28px;
 	width: 53%;
@@ -94,6 +76,13 @@ a {
 	padding-bottom: 25px;
 }
 
+.page-subtitle-container {
+	width: 100%;
+	padding-top: 150px;
+	position: fixed;
+	background-color: white;
+}
+
 .page-sub-title {
 	text-align: center;
 	font-size: 20px;
@@ -113,10 +102,12 @@ a {
 
 .first-button {
 	width: 110px;
-	// border: 1px solid rgb(100, 100, 100);
 	display: inline-block !important;
 	text-align: left;
+}
 
+.nav-button:hover {
+	color: rgb(155, 155, 155) !important;
 }
 
 .second-button {
@@ -169,7 +160,7 @@ a {
 	// background-color: rgb(200, 200, 200);
 	width: 100%;
 	margin-top: 20px;
-	margin-bottom: 25px;
+	margin-bottom: 14px;
 	font-size: 22px;
 	font-weight: 900;
 }
@@ -193,11 +184,21 @@ a {
 	height: 30px;
 }
 
+.review-count {
+	color: rgb(140, 140, 140);
+	padding-top: 10px;
+	padding-bottom: 4px;
+	font-weight: 300;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	word-spacing: 0.5px;
+}
+
 .url {
 	// background-color: rgb(220, 220, 220);
 	width: 100%;
-	margin-top: 10px;
-	margin-bottom: 25px;
+	margin-top: 0px;
+	margin-bottom: 16px;
 	font-size: 16px;
 	font-weight: 500;
 }
@@ -210,7 +211,7 @@ a {
 }
 
 .reviews-box {
-	height: 240px;
+	height: 232px;
 	width: 100%;
 	overflow-y: auto;
 }
@@ -220,8 +221,13 @@ a {
 }
 
 .no-reviews-spacer {
-	height: 245px;
+	height: 263px;
 	width: 100%;
+}
+
+.no-reviews {
+	font-size: 16px;
+	padding-top: 2px;
 }
 
 .reviewer-link {
@@ -307,5 +313,17 @@ a {
 	margin-bottom: 10px;
 }
 
+.sign-up-form {
+	margin-top: 220px;
+	text-align: center;
+}
 
+.sign-in-form {
+	margin-top: 220px;
+	text-align: center;
+}
 
+.user-account {
+	margin-top: 220px;
+	text-align: center;
+}

@@ -30,36 +30,30 @@
 				<div class='nav-buttons-container'>
 					<% if user_signed_in? %>
 						<div class='first-button'>
-							<%= link_to "Account", user_path(current_user.id) %>
+							<%= link_to "Account", user_path(current_user.id), class: 'nav-button' %>
 						</div>
 						<div class='second-button'>
-							<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+							<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-button' %>
 						</div>
 					<% else %>
 						<div class='first-button'>
-							<%= link_to "Sign up", new_user_registration_path %>
+							<%= link_to "Sign up", new_user_registration_path, class: 'nav-button' %>
 						</div>
 						<div class='second-button'>
-							<%= link_to "Sign in", new_user_session_path %>
+							<%= link_to "Sign in", new_user_session_path, class: 'nav-button' %>
 						</div>
 					<% end %>
 					<div class='third-button'>
-						<%= link_to "Home", root_path %>
+						<%= link_to "Home", root_path, class: 'nav-button' %>
 					</div>
 				</div>				
 			</div>
 		</div>
 		<div class='main-body'>
 			<div class='page-top'>
-				<p class='page-title'>Welcome to CoffeeSpots</p>	
-				<p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
-				<% if user_signed_in? %>
-					<p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
-				<% else %>
-					<p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
-				<% end %>
-				<div class='spacer'>
-				</div>
+				<p class='page-title'>Welcome to CoffeeSpots</p>
+			</div>
+			<div class='spacer'>
 			</div>
 			<%= yield %>
 

@@ -1,4 +1,11 @@
-
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>CoffeeSpots is a way to guage the consistency of a cup of coffee in this city.</p>
+    <% if user_signed_in? %>
+        <p class='page-sub-title'>Post a review and let us know how good that brew was!</p>
+    <% else %>
+        <p class='page-sub-title'>Please sign-up or sign-in to add Coffeespots and post reviews!</p>
+    <% end %>
+</div>
 <div class='main-container'>
     <% if user_signed_in? %> 
         <div class='container'>
@@ -27,9 +34,12 @@
                         <% average_review += review.rating %>
                     <% end %>
                     <% average_review /= coffeespot.reviews.count.ceil %>
-                    <% average_review.times do %>
-                        <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
-                    <% end %>
+                    <div class='review-rating'>
+                        <% average_review.times do %>
+                            <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+                        <% end %>
+                    </div>
+                    <p class='review-count'>(<%= coffeespot.reviews.count %> Reviews)</p>
                     <div class='reviews-box'>
                         <div class='small-spacer'>                        
                         </div> 
