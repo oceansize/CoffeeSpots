@@ -20,7 +20,8 @@
         </div>
     <% end %>
     <% if @coffeespots.any? %>
-        <% @coffeespots.each do |coffeespot| %>
+        <% coffeespots_list = @coffeespots.sort_by { |coffeespot| coffeespot.name.gsub(/[^0-9A-Za-z]/, '').downcase } %>
+        <% coffeespots_list.each do |coffeespot| %>
             <div class='container'>
                 <p class='name'>
                     <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %>
@@ -42,7 +43,7 @@
                     <p class='review-count'>(<%= coffeespot.reviews.count %> Reviews)</p>
                     <div class='reviews-box'>
                         <div class='small-spacer'>                        
-                        </div> 
+                        </div>
                         <% coffeespot.reviews.each do |review| %>
                             <p class='reviewer-link'>
                                 <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>

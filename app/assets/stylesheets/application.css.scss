@@ -9,6 +9,7 @@ body {
 	// font-family: 'Marmelad', sans-serif;
 	// font-family: 'Julius Sans One', sans-serif;
 	letter-spacing: 0.2px;
+
 }
 
 a {
@@ -19,12 +20,32 @@ a {
 }
 
 
+.background {
+	background-image: url('/assets/coffee-background.jpeg');
+	background-position-y: 58px;
+	background-repeat: no-repeat;
+	z-index: -1;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.bg-spacer {
+	width: 100%;
+	height: 204px;
+	margin-top: 56px;
+	position: fixed;
+	background-image: url('/assets/coffee-background.jpeg');
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
 .nav-bar {
 	height: 55px;
 	position: fixed;
 	width: 100%;
 	z-index: 10;
- 	background-color: rgb(255, 255, 255);
+ 	background-color: black;
  	border-bottom: 1px solid rgb(200, 200, 200);
 }
 
@@ -36,7 +57,7 @@ a {
 }
 
 .welcome-message {
-	color: black;
+	color: white;
 	height: 28px;
 	width: 20%;
 	padding-left: 10px;
@@ -46,7 +67,7 @@ a {
 }
 
 .system-message {
-	color: black;
+	color: white;
 	height: 28px;
 	width: 53%;
 	padding-top: 12px;
@@ -63,9 +84,10 @@ a {
 
 .page-top {
 	position: fixed;
-	background-color: white;
+	background-color: transparent;
 	width: 100%;
-	z-index: 5;
+	z-index: 2;
+	letter-spacing: 0.6px;
 }
 
 .page-title {
@@ -74,13 +96,17 @@ a {
 	text-align: center;
 	padding-top: 100px;
 	padding-bottom: 25px;
+	color: white;
 }
 
 .page-subtitle-container {
 	width: 100%;
 	padding-top: 150px;
 	position: fixed;
-	background-color: white;
+	background-color: transparent;
+	z-index: 2;
+	color: white;
+
 }
 
 .page-sub-title {
@@ -97,17 +123,22 @@ a {
 	padding-top: 12px;
 	display: inline-block !important;
 	vertical-align: top;
-	background-color: white;
+	background-color: black;
 }
 
 .first-button {
 	width: 110px;
 	display: inline-block !important;
 	text-align: left;
+	color: white;
+}
+
+.nav-button {
+	color: white;
 }
 
 .nav-button:hover {
-	color: rgb(155, 155, 155) !important;
+	color: orange;
 }
 
 .second-button {
@@ -115,7 +146,7 @@ a {
 	// border: 1px solid rgb(100, 100, 100);
 	display: inline-block !important;
 	text-align: left;
-
+	color: white;
 }
 
 .third-button {
@@ -123,6 +154,7 @@ a {
 	// border: 1px solid rgb(100, 100, 100);
 	display: inline-block !important;
 	text-align: left;
+	color: white;
 }
 
 .spacer {
@@ -139,6 +171,8 @@ a {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	padding-top: 265px;
+	z-index: 20;
+	
 }
 
 .container {
@@ -150,10 +184,12 @@ a {
 	margin-bottom: 20px;
 	border: 1px solid rgb(20, 20, 20);
 	display: inline-block !important;
-	box-shadow: 6px 6px 6px rgb(180, 180, 180);
-	-webkit-box-shadow: 6px 6px 6px rgb(180, 180, 180);
+	box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+	-moz-box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
+	-webkit-box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.7);
 	float: left;
 	text-align: center;
+	background-color: white;
 }
 
 .name {
@@ -314,16 +350,19 @@ a {
 }
 
 .sign-up-form {
-	margin-top: 220px;
+	margin-top: 250px;
 	text-align: center;
+	color: white;
 }
 
 .sign-in-form {
-	margin-top: 220px;
+	margin-top: 250px;
 	text-align: center;
+	color: white;
 }
 
 .user-account {
-	margin-top: 220px;
+	margin-top: 250px;
 	text-align: center;
+	color: white;
 }
