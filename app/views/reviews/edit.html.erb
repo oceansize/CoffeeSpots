@@ -1,22 +1,26 @@
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>Edit Review</p>
+</div>
+<div class='sign-in-form'>
 
-<h2>Edit Review</h2>
+	<h3>Coffeespot Name: <%= @coffeespot.name %></h3>
 
-<h3>Coffeespot Name: <%= @coffeespot.name %></h3>
+	<h4>Coffeespot Url: <%= @coffeespot.url %></h4>
 
-<h4>Coffeespot Url: <%= @coffeespot.url %></h4>
+	<%= form_for [@coffeespot, @review] do |rev| %>
 
-<%= form_for [@coffeespot, @review] do |rev| %>
+		<% @review.errors.full_messages.each do |message| %>
+			<p><%= message %></p>
+		<% end %><br/>
 
-	<% @review.errors.full_messages.each do |message| %>
-		<p><%= message %></p>
-	<% end %><br/>
+		<%= rev.label :rating, 'Rating:' %>
+		<%= rev.select :rating, 1..5 %><br/><br/>
 
-	<%= rev.label :rating, 'Rating:' %>
-	<%= rev.select :rating, 1..5 %><br/><br/>
+		<%= rev.label :thoughts, 'Thoughts' %><br/>
+		<%= rev.text_area :thoughts %><br/><br/>
 
-	<%= rev.label :thoughts, 'Thoughts' %><br/>
-	<%= rev.text_area :thoughts %><br/><br/>
+		<%= rev.submit 'Update' %>
 
-	<%= rev.submit 'Update' %>
+	<% end %>
+</div>
 
-<% end %>

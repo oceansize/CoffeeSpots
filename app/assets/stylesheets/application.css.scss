@@ -198,7 +198,27 @@ a {
 	margin-top: 20px;
 	margin-bottom: 14px;
 	font-size: 22px;
-	font-weight: 900;
+	font-weight: 600;
+}
+
+.name-link {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.new-container {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
 }
 
 .new {
@@ -207,7 +227,7 @@ a {
 	margin-top: 20px;
 	margin-bottom: 15px;
 	font-size: 22px;
-	font-weight: 900;
+	font-weight: 600;
 }
 
 .coffee-image {
@@ -239,6 +259,25 @@ a {
 	font-weight: 500;
 }
 
+.url-link {
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
+}
+
+.reviewer-link {
+	color: #8B1515;
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: #8B1515;
+	}
+}
 
 .small-spacer {
 	width: 100%;
@@ -254,6 +293,13 @@ a {
 
 .add-review {
 	padding-top: 4px;
+	color: rgb(0, 0, 0);
+	&:hover {
+		color: rgb(117, 13, 117);	
+	}
+	&:active {
+		color: rgb(0, 0, 0);	
+	}
 }
 
 .no-reviews-spacer {
@@ -266,7 +312,7 @@ a {
 	padding-top: 2px;
 }
 
-.reviewer-link {
+.reviewer-link-container {
 	margin-top: 0px;
 	margin-bottom: 12px;
 }
@@ -301,9 +347,7 @@ a {
 }
 
 .coffeespot-container {
-	border: 2px solid rgb(100, 100, 100);
-	border-radius: 2px;
-	width: 50%;
+	text-align: center;
 	margin-top: 5px;
 	margin-bottom: 20px;
 	padding-top: 0px;

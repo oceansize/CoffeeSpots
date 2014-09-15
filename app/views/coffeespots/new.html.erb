@@ -4,19 +4,19 @@
 </div>
 <div class='sign-in-form'>
 
-<%= form_for @coffeespot do |coffeespot| %>
+	<%= form_for @coffeespot do |coffeespot| %>
 
-	<% @coffeespot.errors.full_messages.each do |message| %>
-		<p><%= message %></p>
-	<% end %><br/>
+		<% @coffeespot.errors.full_messages.each do |message| %>
+			<p><%= message %></p>
+		<% end %><br/>
 
-  <%= coffeespot.label :name %><br/>
-  <%= coffeespot.text_field :name, autofocus: true %><br/>
+	  <%= coffeespot.label :name %><br/>
+	  <%= coffeespot.text_field :name, autofocus: true %><br/>
 
-  <%= coffeespot.label :url %><br/>
-  <%= coffeespot.text_field :url %><br/>
+	  <%= coffeespot.label :url %><br/>
+	  <%= coffeespot.text_field :url %><br/>
 
-  <%= coffeespot.submit 'Add Spot' %>
+	  <%= coffeespot.submit 'Add Spot' %>
 
-<% end %>
+	<% end %>
 </div>

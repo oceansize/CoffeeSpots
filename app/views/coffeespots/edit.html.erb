@@ -1,18 +1,21 @@
-<h2>Update CoffeeSpot</h2>
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>Update CoffeeSpot</p>
+</div>
+<div class='sign-in-form'>
 
-<%= form_for @coffeespot do |spot| %>
+	<%= form_for @coffeespot do |spot| %>
 
-  <%= spot.label :name %>
-  <%= spot.text_field :name %><br/><br/>
+	  <%= spot.label :name %>
+	  <%= spot.text_field :name %><br/><br/>
 
-  <%= spot.label :url %>
-  <%= spot.text_field :url %><br/><br/>
+	  <%= spot.label :url %>
+	  <%= spot.text_field :url %><br/><br/>
 
-  <%= spot.submit 'Edit Spot' %>
+	  <%= spot.submit 'Edit Spot' %>
 
-<% end %>
+	<% end %>
 
-<%= link_to 'Back', coffeespot_path(@coffeespot.id) %>
+	<%= link_to 'Back', coffeespot_path(@coffeespot.id) %>
 
-
+</div>
 

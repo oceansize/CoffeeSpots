@@ -10,12 +10,14 @@
     <% if user_signed_in? %> 
         <div class='container'>
             <a href=<%=new_coffeespot_path%> >
-                <p class='new'>Click To Add</p>
-                <p class='new'>Your Favourite</p>
-                <p class='new'>CoffeeSpot</p>
-                <div class='image-spacer'>
+                <div class='new-container'> 
+                    <p class='new'>Click To Add</p>
+                    <p class='new'>Your Favourite</p>
+                    <p class='new'>CoffeeSpot</p>
+                    <div class='image-spacer'>
+                    </div>
+                    <%= image_tag '/assets/coffee.png', alt: 'coffee', class: 'coffee-image' %>
                 </div>
-                <%= image_tag '/assets/coffee.png', alt: 'coffee', class: 'coffee-image' %>
             </a>
         </div>
     <% end %>
@@ -24,10 +26,10 @@
         <% coffeespots_list.each do |coffeespot| %>
             <div class='container'>
                 <p class='name'>
-                    <%= link_to coffeespot.name, coffeespot_path(coffeespot.id) %>
+                    <%= link_to coffeespot.name, coffeespot_path(coffeespot.id), class: 'name-link' %>
                 </p>         
                 <p class='url'>
-                    <%= link_to "Visit coffespot webpage", coffeespot.url %>
+                    <%= link_to "Visit coffespot webpage", coffeespot.url, class: 'url-link' %>
                 </p>
                 <% if coffeespot.reviews.any? %>
                     <% average_review = 0 %>
@@ -45,8 +47,8 @@
                         <div class='small-spacer'>                        
                         </div>
                         <% coffeespot.reviews.each do |review| %>
-                            <p class='reviewer-link'>
-                                <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id) %>
+                            <p class='reviewer-link-container'>
+                                <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(coffeespot.id, review.id), class: 'reviewer-link' %>
                             </p>
                             <p class='thoughts'>
                                 <%= review.thoughts %>
@@ -58,15 +60,17 @@
                     <div class='no-reviews-spacer'>
                     </div>
                 <% end %>
-                <div class='add-review-button'>
-                    <div class='thin-spacer'>
-                    </div>
-                    <a href=<%=new_coffeespot_review_path(coffeespot.id)%> >
-                        <div class='add-review-container'>
-                            <p class='add-review'>Add a Review</p>
+                <% if user_signed_in? %> 
+                    <div class='add-review-button'>
+                        <div class='thin-spacer'>
                         </div>
-                    </a>
-                </div>
+                        <a href=<%=new_coffeespot_review_path(coffeespot.id)%> >
+                            <div class='add-review-container'>
+                                <p class='add-review'>Add a Review</p>
+                            </div>
+                        </a>
+                    </div>    
+                <% end %>
             </div>
         <% end %>
     <% end %>

@@ -1,40 +1,46 @@
-<h2>Coffeespot Page</h2>
-
-<h3>Name: <%= @coffeespot.name %></h3>
-
-<h4>Added by: <%= @user.email %></h4>
-
-<div class='coffeespot-container'>
-    <% if @coffeespot.reviews.any? %>
-        <div class='coffeespot-title'>Reviews:</div>
-        <ul>
-            <% @coffeespot.reviews.each do |review| %>
-                <li>
-                    <div class='reviewer'>
-                        <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(@coffeespot.id, review.id) %>
-                    </div>
-                    <div class='rating'>
-                        <% review.rating.times do %>
-                            <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
-                        <% end %>
-                    </div>
-
-                    <div class='review'>
-                        <%= review.thoughts %>
-                    </div>
-                </li>
-            <% end %>
-        </ul>
-    <% else %>
-        <p>Reviews: No reviews yet</p>
-    <% end %>
+<div class='page-subtitle-container'>
+    <p class='page-sub-title'>CoffeeSpot Page</p>
 </div>
-<% if user_signed_in? %>
-    <% if current_user.coffeespots.include? @coffeespot %>
-    	<%= link_to 'Edit', edit_coffeespot_path(@coffeespot.id) %>
-    	<%= link_to 'Delete', coffeespot_path(@coffeespot.id), method: :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
-<% end %>
+<div class='sign-in-form'>
 
-<%= link_to 'Back', root_path %>
+    <h3>Name: <%= @coffeespot.name %></h3>
+
+    <h4>Added by: <%= @user.email %></h4>
+
+    <div class='coffeespot-container'>
+        <% if @coffeespot.reviews.any? %>
+            <div class='coffeespot-title'>Reviews:</div>
+            <ul>
+                <% @coffeespot.reviews.each do |review| %>
+                    <li>
+                        <div class='reviewer'>
+                            <%= link_to User.find_by_id(review.user_id).email, coffeespot_review_path(@coffeespot.id, review.id) %>
+                        </div>
+                        <div class='rating'>
+                            <% review.rating.times do %>
+                                <%= image_tag '/assets/rating-star.png', alt: 'rating-star', class: 'rating-star' %>
+                            <% end %>
+                        </div>
+
+                        <div class='review'>
+                            <%= review.thoughts %>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+        <% else %>
+            <p>Reviews: No reviews yet</p>
+        <% end %>
+    </div>
+    <% if user_signed_in? %>
+        <% if current_user.coffeespots.include? @coffeespot %>
+        	<%= link_to 'Edit', edit_coffeespot_path(@coffeespot.id) %>
+        	<%= link_to 'Delete', coffeespot_path(@coffeespot.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+    <% end %>
+
+    <%= link_to 'Back', root_path %>
+
+</div>
+
 
